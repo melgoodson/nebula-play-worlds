@@ -44,7 +44,7 @@ export function HoloIcon({
   const sizeStyles = {
     sm: { container: "w-16 h-16", icon: 24, text: "text-xs" },
     md: { container: "w-20 h-20", icon: 32, text: "text-sm" },
-    lg: { container: "w-24 h-24", icon: 40, text: "text-base" },
+    lg: { container: "w-24 h-24", icon: 48, text: "text-sm" },
   };
 
   return (

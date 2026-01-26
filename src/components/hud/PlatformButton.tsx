@@ -37,8 +37,8 @@ export function PlatformButton({
 
   const sizeStyles = {
     sm: "px-6 py-2 text-sm",
-    md: "px-10 py-3 text-base",
-    lg: "px-16 py-4 text-lg",
+    md: "px-12 py-4 text-base",
+    lg: "px-20 py-5 text-xl",
   };
 
   return (
