@@ -8,7 +8,7 @@ import {
 } from "@/components/hud";
 import { Pyramid, Castle, Gem, Shield } from "lucide-react";
 import dragonEgg from "@/assets/dragon-egg.png";
-import crystalCluster from "@/assets/crystal-cluster.png";
+import playiqLogo from "@/assets/playiq-logo.png";
 
 const Home = () => {
   return (
@@ -23,26 +23,14 @@ const Home = () => {
         <main className="flex-1 container mx-auto px-4 py-6">
           {/* Top Section: Logo/Crystal Left + Hero Panel Right */}
           <div className="grid lg:grid-cols-12 gap-6 items-start mb-8">
-            {/* Left: Large Crystal with PLAYIQ Logo */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-              {/* Large floating crystal */}
+            {/* Left: PlayIQ Logo - floats directly over nebula */}
+            <div className="lg:col-span-5 flex items-center justify-center">
               <div className="relative animate-float">
                 <img 
-                  src={crystalCluster} 
-                  alt="PlayIQ Crystal" 
-                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain drop-shadow-[0_0_60px_hsl(185,100%,50%,0.6)]"
+                  src={playiqLogo} 
+                  alt="PlayIQ" 
+                  className="w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain drop-shadow-[0_0_80px_hsl(185,100%,50%,0.5)]"
                 />
-                {/* Multi-layer glow effect */}
-                <div className="absolute inset-0 bg-gradient-radial from-primary/20 via-transparent to-transparent blur-3xl" />
-              </div>
-              
-              {/* PLAYIQ Logo below crystal */}
-              <div className="relative mt-4">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest text-glow-primary">
-                  <span className="text-primary">PLAY</span>
-                  <span className="text-foreground">IQ</span>
-                </h1>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent blur-sm" />
               </div>
             </div>
 
