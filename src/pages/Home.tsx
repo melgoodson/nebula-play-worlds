@@ -23,15 +23,13 @@ const Home = () => {
         <main className="flex-1 container mx-auto px-4 py-6">
           {/* Top Section: Logo/Crystal Left + Hero Panel Right */}
           <div className="grid lg:grid-cols-12 gap-6 items-start mb-8">
-            {/* Left: PlayIQ Logo - floats directly over nebula */}
+            {/* Left: PlayIQ Logo - floats directly over nebula, NO container */}
             <div className="lg:col-span-5 flex items-center justify-center">
-              <div className="relative animate-float">
-                <img 
-                  src={playiqLogo} 
-                  alt="PlayIQ" 
-                  className="w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain drop-shadow-[0_0_80px_hsl(185,100%,50%,0.5)]"
-                />
-              </div>
+              <img 
+                src={playiqLogo} 
+                alt="PlayIQ" 
+                className="w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain drop-shadow-[0_0_60px_hsl(185,100%,50%,0.6)] animate-float"
+              />
             </div>
 
             {/* Right: Hero Panel with Dragon Egg */}
