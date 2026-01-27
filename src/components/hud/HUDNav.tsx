@@ -11,6 +11,7 @@ const navItems: NavItem[] = [
   { label: "PLAYIQ AR", href: "/scan" },
   { label: "WORLDS", href: "/worlds" },
   { label: "CHALLENGES", href: "/challenges" },
+  { label: "COURSE", href: "/course" },
   { label: "PROJECTS", href: "/showcase" },
   { label: "BLOG", href: "/blog" },
   { label: "CONTACT", href: "/contact" },
