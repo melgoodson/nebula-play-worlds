@@ -17,6 +17,9 @@ import Course from "./pages/Course";
 import Redeem from "./pages/Redeem";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
+import Blog from "./pages/Blog";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -59,6 +62,11 @@ const App = () => (
           
           {/* Product */}
           <Route path="/product" element={<Product />} />
+          
+          {/* Blog, FAQ, Contact */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
           
           {/* Placeholder routes */}
           <Route path="/worlds" element={<Home />} />
