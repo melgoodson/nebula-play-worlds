@@ -16,6 +16,7 @@ import Shop from "./pages/Shop";
 import Course from "./pages/Course";
 import Redeem from "./pages/Redeem";
 import Profile from "./pages/Profile";
+import Product from "./pages/Product";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,9 @@ const App = () => (
           
           {/* Profile */}
           <Route path="/profile" element={<Profile />} />
+          
+          {/* Product */}
+          <Route path="/product" element={<Product />} />
           
           {/* Placeholder routes */}
           <Route path="/worlds" element={<Home />} />

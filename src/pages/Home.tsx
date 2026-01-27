@@ -6,9 +6,13 @@ import {
   HoloIcon, 
   PlatformButton 
 } from "@/components/hud";
-import { Pyramid, Castle, Gem, Shield } from "lucide-react";
+import { Pyramid, Castle, Gem, Shield, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 import dragonEgg from "@/assets/dragon-egg.png";
 import playiqLogoLight from "@/assets/playiq-logo-light.png";
+import playiqToySet from "@/assets/playiq-toy-set.png";
+
+const AMAZON_LINK = "https://www.amazon.com/dp/B0F3LV725Z";
 
 const Home = () => {
   return (
@@ -28,6 +32,50 @@ const Home = () => {
               alt="PlayIQ - Imagine. Build. Grow." 
               className="w-80 md:w-96 lg:w-[28rem] object-contain drop-shadow-[0_0_40px_hsl(185,100%,50%,0.4)] animate-float"
             />
+          </div>
+
+          {/* Featured Product Panel - NEW */}
+          <div className="flex justify-center mb-8">
+            <HUDPanel variant="hero" className="max-w-3xl w-full" glowColor="secondary">
+              <div className="flex items-center gap-8 p-2">
+                {/* Product Image - Clickable */}
+                <Link to="/product" className="relative flex-shrink-0 animate-float -ml-4 hover:scale-105 transition-transform" style={{ animationDelay: '0.3s' }}>
+                  <img 
+                    src={playiqToySet} 
+                    alt="PlayIQ Magnetic Building Blocks" 
+                    className="w-36 h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 object-contain drop-shadow-[0_0_40px_hsl(185,100%,50%,0.5)]"
+                  />
+                  {/* Circular energy rings */}
+                  <div className="absolute inset-0 border-2 border-primary/30 rounded-full animate-pulse-glow" />
+                  <div className="absolute inset-2 border border-secondary/20 rounded-full" />
+                  {/* Glow platform */}
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-28 h-4 bg-primary/30 blur-xl rounded-full" />
+                </Link>
+                
+                {/* Text Content */}
+                <div className="flex-1 pr-4">
+                  <Link to="/product">
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-2 hover:text-primary transition-colors">
+                      181-Piece Magnetic
+                      <br />
+                      <span className="text-secondary text-glow-secondary">Building Blocks Set</span>
+                    </h2>
+                  </Link>
+                  <p className="text-xs md:text-sm text-muted-foreground mb-4 line-clamp-2">
+                    STEM Toys for Kids Ages 3+ | Educational Space-Themed Magnetic Construction Kit with LED Light-Up Cubes
+                  </p>
+                  <a 
+                    href={AMAZON_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary/20 border border-primary/60 text-primary font-bold tracking-wider uppercase transition-all duration-300 hover:bg-primary/30 hover:shadow-[0_0_40px_hsl(var(--primary)/0.6)] glow-primary text-sm animate-pulse-glow"
+                  >
+                    <span>Buy Now</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </HUDPanel>
           </div>
 
           {/* Hero Panel - Centered */}
