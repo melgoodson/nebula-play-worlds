@@ -26,7 +26,7 @@ const Home = () => {
         {/* Main Content */}
         <main className="flex-1 container mx-auto px-4 py-6">
           {/* Logo - Centered below nav */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-4">
             <img 
               src={playiqLogoLight} 
               alt="PlayIQ - Imagine. Build. Grow." 
