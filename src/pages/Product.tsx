@@ -6,33 +6,39 @@ import {
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import playiqToySet from "@/assets/playiq-toy-set.png";
+import productImage1 from "@/assets/product-image-1.jpg";
+import productImage2 from "@/assets/product-image-2.jpg";
+import productImage3 from "@/assets/product-image-3.jpg";
+import productImage4 from "@/assets/product-image-4.jpg";
+import productImage5 from "@/assets/product-image-5.jpg";
 
 const AMAZON_LINK = "https://www.amazon.com/dp/B0F3LV725Z";
 
-const productFeatures = [
+const productSections = [
   {
     title: "COMPLETE 181-PIECE SPACE-THEMED MAGNETIC BUILDING SET",
-    description: "Unlock endless creativity with galactic print magnetic blocks, glow-in-the-dark aliens, astronauts, LED light-up figures, and a sturdy double-sided magnetic board for stacking stability. Includes everything you need — even a convenient storage box to keep playtime organized. Perfect for kids ages 3+."
+    description: "Unlock endless creativity with galactic print magnetic blocks, glow-in-the-dark aliens, astronauts, LED light-up figures, and a sturdy double-sided magnetic board for stacking stability. Includes everything you need — even a convenient storage box to keep playtime organized. Perfect for kids ages 3+.",
+    image: productImage1
   },
   {
     title: "GALACTIC GLOW-IN-THE-DARK ALIENS & LIGHT-UP FIGURES",
-    description: "Time to embark on an interstellar adventure! Unlike standard magnetic block sets, PlayIQ features glow-in-the-dark aliens, astronauts, and LED-powered characters that light up, adding excitement for day-to-night play."
+    description: "Time to embark on an interstellar adventure! Unlike standard magnetic block sets, PlayIQ features glow-in-the-dark aliens, astronauts, and LED-powered characters that light up, adding excitement for day-to-night play.",
+    image: productImage2
   },
   {
     title: "STEM LEARNING THROUGH PLAY",
-    description: "Supports STEM skill development, creativity, 3D thinking, and fine motor skills through hands-on building. Designed for children ages 3–7, this set offers screen-free, educational fun that grows with your child."
+    description: "Supports STEM skill development, creativity, 3D thinking, and fine motor skills through hands-on building. Designed for children ages 3–7, this set offers screen-free, educational fun that grows with your child.",
+    image: productImage3
   },
   {
     title: "PREMIUM QUALITY & SAFE DESIGN",
-    description: "Made with BPA-free, CE-certified, eco-friendly materials. Features durable construction, strong magnets, and child-safe rounded edges. Fully compatible with other 2x2cm magnetic blocks — expand your universe with ease."
+    description: "Made with BPA-free, CE-certified, eco-friendly materials. Features durable construction, strong magnets, and child-safe rounded edges. Fully compatible with other 2x2cm magnetic blocks — expand your universe with ease.",
+    image: productImage4
   },
   {
     title: "BUILD REAL SPACE SCENES",
-    description: "Includes a scene guidebook with 6 fully buildable designs like \"Galactic Station\" and \"Alien Base.\" Every scene shown can be built using only this set — no inflated images, no missing pieces, just real imaginative play."
-  },
-  {
-    title: "UNLEASH ADVANCED CREATIVITY WITH STURDY MAGNETIC PLAY",
-    description: "Elevate your child's building experience with our versatile magnetic block set, designed for ten-year-olds ready to explore magnetic building cubes. Our sets blend durability and innovation to support intricate designs and cognitive growth, promising endless educational play."
+    description: "Includes a scene guidebook with 6 fully buildable designs like \"Galactic Station\" and \"Alien Base.\" Every scene shown can be built using only this set — no inflated images, no missing pieces, just real imaginative play.",
+    image: productImage5
   }
 ];
 
@@ -96,26 +102,38 @@ const Product = () => {
             </HUDPanel>
           </div>
 
-          {/* Product Features */}
-          <div className="space-y-6">
+          {/* Alternating Copy and Image Sections */}
+          <div className="space-y-8">
             <h2 className="text-2xl font-bold text-foreground text-center mb-8">
               Product <span className="text-primary text-glow-primary">Features</span>
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              {productFeatures.map((feature, index) => (
-                <HUDPanel key={index} variant="small" glowColor={index % 2 === 0 ? "primary" : "secondary"}>
+            {productSections.map((section, index) => (
+              <div key={index} className="space-y-6">
+                {/* Copy Panel */}
+                <HUDPanel variant="default" glowColor={index % 2 === 0 ? "primary" : "secondary"}>
                   <div className="space-y-3">
-                    <h3 className="text-lg font-bold text-primary">
-                      {feature.title}
+                    <h3 className="text-xl md:text-2xl font-bold text-primary">
+                      {section.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {feature.description}
+                    <p className="text-muted-foreground leading-relaxed">
+                      {section.description}
                     </p>
                   </div>
                 </HUDPanel>
-              ))}
-            </div>
+
+                {/* Image Panel */}
+                <HUDPanel variant="hero" glowColor={index % 2 === 0 ? "secondary" : "primary"}>
+                  <div className="flex items-center justify-center">
+                    <img 
+                      src={section.image} 
+                      alt={section.title}
+                      className="w-full max-w-4xl rounded-lg object-contain"
+                    />
+                  </div>
+                </HUDPanel>
+              </div>
+            ))}
           </div>
 
           {/* Bottom CTA */}
