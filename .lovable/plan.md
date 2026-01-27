@@ -1,153 +1,91 @@
 
-# Pixel-Perfect Home Page Rebuild
+
+# Blog Page Fix + Modern SEO/AEO Implementation Plan
 
 ## Overview
-This plan will fix every component to exactly match your reference image. We will also build an overlay calibration tool so you can verify pixel-perfect alignment.
-
-## Phase 1: Copy Your High-Res Reference Image for Overlay Tool
-
-Save `user-uploads://playIQ_dream_site.png` to `src/assets/reference-overlay.png` for use in the calibration tool.
+This plan addresses the broken blog route (404) and implements modern Answer Engine Optimization (AEO) tactics to make the PlayIQ website discoverable by AI search engines like ChatGPT, Perplexity, and Google AI Overviews.
 
 ---
 
-## Phase 2: Fix the PlayIQ Logo Display (Remove Dark Box)
+## Implementation Tasks
 
-**Problem**: The logo currently has a dark rectangular background.
+### Phase 1: Fix Broken Routes
 
-**Solution in `Home.tsx`**:
-- Remove ALL container divs around the logo image
-- Set the image to display directly with transparent background
-- Apply only drop-shadow glow effect, no background or border
-- Ensure the PNG transparency is preserved
+**1.1 Create Blog Page**
+- New file: `src/pages/Blog.tsx`
+- Uses Nebula HUD design system (NebulaScene, HUDNav, HUDPanel)
+- Initial "Coming Soon" content with launch announcement
+- Semantic HTML structure for AEO
 
-```text
-Before:                              After:
-+------------------+                 
-|    [dark box]    |                 [logo floats freely]
-|   PLAYIQ LOGO    |    -->           PLAYIQ LOGO
-|    [dark box]    |                 [cyan glow around edges]
-+------------------+                 
-```
+**1.2 Create Contact Page**
+- New file: `src/pages/Contact.tsx`
+- Basic contact information using HUD components
+- Fixes the Contact nav link 404
 
----
-
-## Phase 3: Fix Navigation Bar
-
-**Problem**: Current nav is a minimal flat bar without proper container.
-
-**Solution in `HUDNav.tsx`**:
-- Add rounded-pill container with border
-- Apply cyan glow around the entire nav bar
-- Keep items evenly spaced with proper padding
-- Active state: bright cyan text + underline (keep current)
-- Add subtle chamfered corner styling
-
-```text
-Reference nav bar structure:
-+-------------------------------------------------------------------+
-|  HOME    PLAYIQ AR    WORLDS    CHALLENGES    PROJECTS    BLOG   |
-|  ____                                                              |
-+-------------------------------------------------------------------+
-  ^-- rounded pill with cyan border glow
-```
+**1.3 Add Routes to App.tsx**
+- Import Blog and Contact components
+- Add routes: `/blog` and `/contact`
 
 ---
 
-## Phase 4: Fix Hologram Icons (Remove Square Boxes)
+### Phase 2: SEO Foundation
 
-**Problem**: Icons have dark square glass boxes around them.
+**2.1 Update index.html Meta Tags**
+- Title: "PlayIQ - STEM Magnetic Building Blocks for Kids"
+- Updated meta description with product focus
+- PlayIQ-branded Open Graph and Twitter Card tags
 
-**Solution in `HoloIcon.tsx`**:
-- Remove the glass-panel container entirely
-- Display icon floating freely
-- Add elliptical glow disk BELOW the icon (not around it)
-- The glow disk should be the color of the icon (yellow, magenta, blue)
-- Icon should have drop-shadow glow effect
-
-```text
-Reference icon structure:
-     [icon]          
-       |             
-   =========    <-- elliptical glow disk (colored)
-    "Label"
-```
+**2.2 Enhance robots.txt**
+- Explicit allow/disallow rules
+- Sitemap reference for future sitemap.xml
 
 ---
 
-## Phase 5: Fix Progress Panel Styling
+### Phase 3: AEO Implementation
 
-**Problem**: Panel is too plain, missing chamfered corner nodes.
+**3.1 Create llms.txt File**
+- New file: `public/llms.txt`
+- Markdown format following llmstxt.org specification
+- Contains PlayIQ product info, key pages, and FAQ summary
+- Entry point for AI crawlers (ChatGPT, Perplexity, etc.)
 
-**Solution in `HUDPanel.tsx`**:
-- Add glowing corner node dots at each corner
-- Ensure chamfered (clipped) corners with neon border
-- Add subtle inner glow
+**3.2 Create FAQ Page with JSON-LD Schema**
+- New file: `src/pages/FAQ.tsx`
+- LLM-optimized Q&A format using Accordion components
+- Injects FAQPage JSON-LD structured data
+- Questions cover: product details, safety, age range, compatibility, purchasing
 
----
+**3.3 Add Product Schema to Product Page**
+- Modify: `src/pages/Product.tsx`
+- Add Product JSON-LD schema for e-commerce visibility
 
-## Phase 6: Fix Platform CTA Buttons
-
-**Problem**: Buttons are basic rounded rectangles, missing platform effects.
-
-**Solution in `PlatformButton.tsx`**:
-- Add circular holographic platform base image/effect below button
-- The platform should have concentric rings with glow
-- Add fog/mist effect at bottom
-- Button itself sits on top of the platform
-
----
-
-## Phase 7: Create Dev Overlay Calibration Tool
-
-**New file: `src/components/dev/DevOverlay.tsx`**
-
-Features:
-- Toggle with keyboard shortcut `Ctrl+Shift+O`
-- Overlays your reference image at adjustable opacity
-- Slider to control opacity (0-100%)
-- Drag to reposition overlay
-- Only visible in development mode
-
-**Update `App.tsx`**:
-- Import and render DevOverlay component
-- Only render when `import.meta.env.DEV` is true
+**3.4 Add FAQ Route**
+- Update `src/App.tsx` with `/faq` route
 
 ---
+
+## Files to Create
+| File | Purpose |
+|------|---------|
+| `src/pages/Blog.tsx` | Blog listing page |
+| `src/pages/FAQ.tsx` | FAQ with JSON-LD schema |
+| `src/pages/Contact.tsx` | Contact information |
+| `public/llms.txt` | AI discovery file |
 
 ## Files to Modify
-
-| File | Action | Changes |
-|------|--------|---------|
-| `src/assets/reference-overlay.png` | CREATE | Copy high-res reference |
-| `src/pages/Home.tsx` | MODIFY | Remove dark box around logo, clean up layout |
-| `src/components/hud/HUDNav.tsx` | MODIFY | Add pill container with border glow |
-| `src/components/hud/HoloIcon.tsx` | MODIFY | Remove square box, add elliptical glow base |
-| `src/components/hud/HUDPanel.tsx` | MODIFY | Add corner node glows |
-| `src/components/hud/PlatformButton.tsx` | MODIFY | Add circular platform base with rings |
-| `src/components/dev/DevOverlay.tsx` | CREATE | Overlay calibration tool |
-| `src/App.tsx` | MODIFY | Add DevOverlay component |
+| File | Changes |
+|------|---------|
+| `src/App.tsx` | Add Blog, FAQ, Contact routes |
+| `index.html` | Update meta tags |
+| `public/robots.txt` | Add sitemap reference |
+| `src/pages/Product.tsx` | Add Product JSON-LD schema |
 
 ---
 
-## Requesting Additional Assets
+## Expected Outcomes
+- Blog and Contact links will work (no more 404s)
+- Site discoverable by AI search engines
+- Structured FAQ data helps LLMs answer product questions
+- Product schema improves e-commerce visibility
+- llms.txt provides curated entry point for AI crawlers
 
-If you have separate transparent PNG files for these elements from your original design, please upload them:
-
-1. **Dragon egg** - the dark metallic version shown in reference
-2. **Circular platform bases** - the holographic ring platforms under the CTAs
-3. **Custom icons** - if you have the pyramid/tower/gem/shield as separate images
-
-If you don't have these, I will recreate them using CSS/SVG effects to match as closely as possible.
-
----
-
-## Verification Checklist
-
-After implementation, use the overlay tool to verify:
-
-- [ ] PlayIQ logo floats with NO dark box
-- [ ] Navigation has rounded-pill container with cyan glow border
-- [ ] Hologram icons have NO square boxes, only elliptical base glows
-- [ ] Progress panel has glowing corner nodes
-- [ ] Platform CTAs have circular holographic platform bases
-- [ ] Overall layout proportions match reference
