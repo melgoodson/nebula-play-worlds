@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { 
   NebulaScene, 
   HUDNav, 
@@ -43,6 +44,60 @@ const productSections = [
 ];
 
 const Product = () => {
+  // Inject Product JSON-LD schema
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "product-schema";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "PlayIQ 181-Piece Magnetic Building Blocks Set",
+      "description": "STEM educational magnetic building blocks with glow-in-the-dark aliens, LED light-up figures, and space-themed designs for kids ages 3+.",
+      "brand": {
+        "@type": "Brand",
+        "name": "PlayIQ"
+      },
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMinAge": 3,
+        "suggestedMaxAge": 7
+      },
+      "category": "Toys & Games > Building Toys > Magnetic Building Sets",
+      "material": "BPA-free plastic",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.amazon.com/dp/B0F3LV725Z",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Amazon"
+        }
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piece Count",
+          "value": "181"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Safety Certifications",
+          "value": "CE Certified, BPA-Free"
+        }
+      ]
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById("product-schema");
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   return (
     <NebulaScene>
       <div className="min-h-screen flex flex-col">
