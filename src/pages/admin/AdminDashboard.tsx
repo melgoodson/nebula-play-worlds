@@ -4,8 +4,8 @@ import { FileText, HelpCircle, Settings, LayoutDashboard } from "lucide-react";
 
 const adminModules = [
   {
-    title: "Blog Manager",
-    description: "Create, edit, and publish blog posts with AI assistance",
+    title: "Website SEAL Generator",
+    description: "Create and manage SEO-optimized content with AI assistance",
     icon: FileText,
     href: "/admin/blog",
     color: "primary",

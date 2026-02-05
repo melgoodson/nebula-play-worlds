@@ -291,10 +291,10 @@ const BlogManager = () => {
           {/* Page Header */}
           <header className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-              Blog <span className="text-primary text-glow-primary">Manager</span>
+              Website SEAL <span className="text-primary text-glow-primary">Generator</span>
             </h1>
             <p className="text-muted-foreground">
-              Create and manage blog posts with AI assistance
+              Create and manage SEO-optimized content with AI assistance
             </p>
           </header>
 
@@ -304,7 +304,7 @@ const BlogManager = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-2 mb-4">
                   <Sparkles className="w-5 h-5 text-accent" />
-                  <h2 className="text-xl font-bold text-foreground">AI Blog Generator</h2>
+                  <h2 className="text-xl font-bold text-foreground">AI SEAL Generator</h2>
                 </div>
                 
                 <div className="space-y-4">
