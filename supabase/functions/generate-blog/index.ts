@@ -28,7 +28,7 @@ serve(async (req) => {
     // Verify user from JWT
     const token = authHeader.replace("Bearer ", "");
     const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-    
+
     if (authError || !user) {
       return new Response(JSON.stringify({ error: "Invalid token" }), {
         status: 401,
@@ -60,9 +60,9 @@ serve(async (req) => {
       });
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+    const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
+    if (!GEMINI_API_KEY) {
+      throw new Error("GEMINI_API_KEY is not configured");
     }
 
     const systemPrompt = `You are an expert SEO and AEO (Answer Engine Optimization) blog writer for PlayIQ, a company that sells educational magnetic building blocks for children and offers AI-powered STEM courses.
@@ -93,10 +93,10 @@ ${additionalContext ? `\nAdditional context: ${additionalContext}` : ""}
 
 The post should be 800-1200 words, well-structured for both human readers and AI systems.`;
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        Authorization: `Bearer ${GEMINI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -171,7 +171,7 @@ The post should be 800-1200 words, well-structured for both human readers and AI
 
     const aiResponse = await response.json();
     const toolCall = aiResponse.choices?.[0]?.message?.tool_calls?.[0];
-    
+
     if (!toolCall?.function?.arguments) {
       throw new Error("Invalid AI response structure");
     }
@@ -184,7 +184,7 @@ The post should be 800-1200 words, well-structured for both human readers and AI
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)/g, "")
       .slice(0, 60);
-    
+
     const timestamp = Date.now().toString(36);
     const slug = `${baseSlug}-${timestamp}`;
 
