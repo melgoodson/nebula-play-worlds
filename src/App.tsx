@@ -7,6 +7,7 @@ import { DevOverlay } from "@/components/dev/DevOverlay";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AdminRoute } from "@/components/admin/AdminRoute";
+import { RouteAnalyticsTracker } from "@/components/analytics/RouteAnalyticsTracker";
 
 // Pages
 import Home from "./pages/Home";
@@ -52,10 +53,11 @@ const App = () => (
       {import.meta.env.DEV && <DevOverlay />}
       <BrowserRouter>
         <AuthProvider>
+          <RouteAnalyticsTracker />
           <Routes>
             {/* Redirect root to home */}
             <Route path="/" element={<Navigate to="/home" replace />} />
-            
+
             {/* AR Worlds routes (require blocks entitlement) */}
             <Route path="/home" element={<Home />} />
             <Route path="/scan" element={<Scan />} />
@@ -63,17 +65,17 @@ const App = () => (
             <Route path="/practice" element={<Practice />} />
             <Route path="/showcase" element={<Showcase />} />
             <Route path="/settings" element={<Settings />} />
-            
+
             {/* Shop routes */}
             <Route path="/shop" element={<Shop />} />
             <Route path="/shop/:slug" element={<Shop />} />
-            
+
             {/* Course sales page (public) */}
             <Route path="/course" element={<Course />} />
-            
+
             {/* Auth page (public) */}
             <Route path="/auth" element={<Auth />} />
-            
+
             {/* Dashboard routes (protected) */}
             <Route path="/dashboard" element={
               <ProtectedRoute>
@@ -87,7 +89,7 @@ const App = () => (
               <Route path="resources" element={<Resources />} />
               <Route path="community" element={<Community />} />
             </Route>
-            
+
             {/* Admin routes (admin role required) */}
             <Route path="/admin" element={
               <AdminRoute>
@@ -109,26 +111,26 @@ const App = () => (
                 <AdminSettings />
               </AdminRoute>
             } />
-            
+
             {/* Blocks redeem */}
             <Route path="/redeem" element={<Redeem />} />
-            
+
             {/* Profile */}
             <Route path="/profile" element={<Profile />} />
-            
+
             {/* Product */}
             <Route path="/product" element={<Product />} />
-            
+
             {/* Blog, FAQ, Contact */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
-            
+
             {/* Placeholder routes */}
             <Route path="/worlds" element={<Home />} />
             <Route path="/challenges" element={<Practice />} />
-            
+
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>

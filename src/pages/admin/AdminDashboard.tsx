@@ -1,6 +1,7 @@
 import { NebulaScene, HUDNav, HUDPanel } from "@/components/hud";
 import { Link } from "react-router-dom";
 import { FileText, HelpCircle, Settings, LayoutDashboard } from "lucide-react";
+import { WebsiteAnalyticsPanel } from "@/components/admin/WebsiteAnalyticsPanel";
 
 const adminModules = [
   {
@@ -70,6 +71,16 @@ const AdminDashboard = () => {
               </Link>
             ))}
           </div>
+
+          {/* Divider */}
+          <div className="max-w-5xl mx-auto my-12">
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+          </div>
+
+          {/* Website Analytics */}
+          <div className="max-w-5xl mx-auto">
+            <WebsiteAnalyticsPanel />
+          </div>
         </main>
 
         <div className="h-12" />
@@ -79,3 +90,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
